@@ -1,5 +1,5 @@
 package com.app.enums;
 
 public enum Gender {
-	Male,Female,Others
+	MALE,FEMALE,OTHERS
 }

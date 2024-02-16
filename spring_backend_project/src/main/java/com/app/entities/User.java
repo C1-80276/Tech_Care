@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.app.enums.BloodGroup;
 import com.app.enums.Gender;
 import com.app.enums.UserRole;
 
@@ -75,6 +76,10 @@ public class User extends BaseEntity{
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private UserRole role;
+    
+    @Enumerated(EnumType.STRING)
+    @Column(name = "blood_group")
+    private BloodGroup bloodGroup;
     
 }
 
