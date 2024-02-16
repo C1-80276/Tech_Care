@@ -2,6 +2,39 @@ import axios from 'axios';
 import { createUrl, log } from '../utils/utils';
 import { toast } from 'react-toastify';
 
+export async function registerHospitalApi(
+              adminName,
+                email,
+                password,
+                name,
+                address,
+                city,
+                contactNo,
+                role
+){
+  const url = createUrl("/hospital/register")
+  const body = {
+                adminName,
+                email,
+                password,
+                name,
+                address,
+                city,
+                contactNo,
+                role: "admin"
+  }
+
+  try{
+    const response = await axios.post(url, body);
+  console.log(response.data);
+  return response.data;
+  }catch(ex){
+    console.log('Error registering user:', ex);
+    return null;
+  }
+
+}
+
 export async function registerUser(
   name,
   email,
