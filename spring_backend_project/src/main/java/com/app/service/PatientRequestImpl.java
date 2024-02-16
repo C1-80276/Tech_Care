@@ -12,6 +12,7 @@ import com.app.dao.PatientRequestDao;
 import com.app.dto.PatientRequestAddDto;
 import com.app.entities.Hospital;
 import com.app.entities.PatientsRequest;
+import com.app.enums.PatientStatus;
 
 @Service
 @Transactional
@@ -38,5 +39,18 @@ public class PatientRequestImpl implements PatientRequestService{
 		if(savedPat == null) return "Something went wrong...";
 		return "Patient Added Succesfully!";
 	}
+
+	@Override
+	public String changeStatus(Long patientId, PatientStatus status) {
+		PatientsRequest pat = patDao.findById(patientId)
+				.orElseThrow(() -> new ResourceNotFoundException("Patient not found"));
+		pat.setStatus(status);
+		patDao.save(pat);
+		return "Successfully changed status!";
+	}
+
+	
+	
+	
 
 }
