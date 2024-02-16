@@ -45,9 +45,11 @@ public class User extends BaseEntity{
     @Column(name = "gender", nullable = false)
     private Gender gender;
     
-    @NotNull
-    @Column(name = "age")
-    private Integer age;
+    @Column(name = "height")
+    private Integer height;
+    
+    @Column(name = "weight")
+    private Double weight;
     
     @NotBlank
     @Email
@@ -55,25 +57,13 @@ public class User extends BaseEntity{
     private String email;
     
     @NotBlank
-    @Column(name = "adhaar_no")
-    private String adhaarNo;
-    
-    @NotBlank
     @Column(name = "mobile_no")
     private String mobileNo;
-    
-    @NotBlank
-    @Column(name = "state")
-    private String state;
    
     @NotBlank
     @Column(name = "city")
     private String city;
-    
-    @NotNull
-    @Column(name = "pincode")
-    private Integer pincode; 
-
+     
     @NotBlank
     @Column(name = "password")
     private String password;
