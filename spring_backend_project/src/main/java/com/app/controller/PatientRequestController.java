@@ -1,8 +1,11 @@
 package com.app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.CustomResponse;
 import com.app.dto.PatientRequestAddDto;
+import com.app.entities.PatientsRequest;
 import com.app.enums.PatientStatus;
 import com.app.service.PatientRequestService;
 
@@ -36,9 +40,15 @@ public class PatientRequestController {
 	public ResponseEntity<?> changePatientReqStatus(@RequestParam Long patientId, @RequestParam PatientStatus status){
 		
 		String msg = patService.changeStatus(patientId, status);
-		return ResponseEntity.status(HttpStatus.CREATED).body(new CustomResponse<>(false, msg, null));
+		return ResponseEntity.status(HttpStatus.OK).body(new CustomResponse<>(false, msg, null));
 	}
 	
+	@GetMapping("/findByStatus")
+	public ResponseEntity<?> getPendingPatientsRequest(){
+		List<PatientsRequest> pats = patService.findAllByStatus(PatientStatus.PENDING);
+		return ResponseEntity.status(HttpStatus.CREATED).body(new CustomResponse<>(false, "Successfull!", pats));
+		
+	}
 	
 	
 }

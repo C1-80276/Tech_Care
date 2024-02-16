@@ -1,5 +1,7 @@
 package com.app.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
@@ -47,6 +49,11 @@ public class PatientRequestImpl implements PatientRequestService{
 		pat.setStatus(status);
 		patDao.save(pat);
 		return "Successfully changed status!";
+	}
+
+	@Override
+	public List<PatientsRequest> findAllByStatus(PatientStatus pending) {
+		return patDao.findByStatus(pending);
 	}
 
 	
