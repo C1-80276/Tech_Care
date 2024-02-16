@@ -27,4 +27,8 @@ public class Donations extends BaseEntity{
 	@ManyToOne
 	private User donor;
 
+	@JoinColumn(name = "hospitalId")
+	@ManyToOne
+	private Hospital hospital;
+	
 }

@@ -28,11 +28,9 @@ public class UserSignUp {
    @Length(min = 5, max = 12)
    private String username;
  
-   @NotBlank
  
    private String firstName;
  
-   @NotBlank
    
    private String lastName;
 

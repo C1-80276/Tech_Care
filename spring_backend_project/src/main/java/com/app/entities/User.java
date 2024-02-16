@@ -30,15 +30,12 @@ import lombok.Setter;
 public class User extends BaseEntity{
     
     @Column(name = "username" ,unique = true)
-    @NotBlank
     @Length(min = 5, max = 12)
     private String username;
     
-    @NotBlank
     @Column(name = "first_name")
     private String firstName;
     
-    @NotBlank
     @Column(name = "last_name")
     private String lastName;
 
@@ -52,20 +49,16 @@ public class User extends BaseEntity{
     @Column(name = "weight")
     private Double weight;
     
-    @NotBlank
     @Email
     @Column(name = "email")
     private String email;
     
-    @NotBlank
     @Column(name = "mobile_no")
     private String mobileNo;
    
-    @NotBlank
     @Column(name = "city")
     private String city;
      
-    @NotBlank
     @Column(name = "password")
     private String password;
     
