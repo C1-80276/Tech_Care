@@ -23,8 +23,8 @@ import com.app.custom_exceptions.ResourceNotFoundException;
 import com.app.dto.CustomResponse;
 import com.app.dto.LogIn;
 import com.app.dto.SigninResponse;
+import com.app.dto.UserSignUp;
 import com.app.entities.User;
-import com.app.enums.UserRole;
 import com.app.security.JwtUtils;
 import com.app.service.TesingEmailService;
 import com.app.service.UserService;
@@ -79,7 +79,7 @@ public class UserController {
 
 	@PostMapping("/register")
 	public ResponseEntity<?> register(@RequestParam String email, @RequestParam String otp,
-			@RequestBody User user) {
+			@RequestBody UserSignUp user) {
 		// Retrieve OTP and its timestamp
 		Pair<String, Long> otpPair = otpMap.get(email);
 		if (otpPair == null) {

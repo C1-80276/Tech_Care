@@ -1,18 +1,14 @@
 package com.app.entities;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
-import com.app.enums.BloodGroup;
-import com.app.enums.Gender;
-import com.app.enums.UserRole;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,9 +23,12 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Appointment extends BaseEntity{
 
-	@JoinColumn(name = "hospital")
+	@JoinColumn(name = "hospitalId")
+	@ManyToOne
 	private Hospital hospital;
-	@JoinColumn(name = "donar")
+	
+	@JoinColumn(name = "userId")
+	@ManyToOne
 	private User donar;
 
 	private Boolean status;

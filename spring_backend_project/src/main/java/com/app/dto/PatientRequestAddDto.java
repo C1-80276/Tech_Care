@@ -1,20 +1,15 @@
-package com.app.entities;
-
-import java.time.LocalDate;
-import java.util.List;
+package com.app.dto;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.app.entities.Hospital;
 import com.app.enums.BloodGroup;
-import com.app.enums.Gender;
 import com.app.enums.PatientStatus;
 import com.app.enums.UserRole;
 
@@ -23,28 +18,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "patients_request")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class PatientsRequest extends BaseEntity{
-
-	@Column(name = "name")
+@AllArgsConstructor
+public class PatientRequestAddDto {
+	@NotBlank
 	private String name;
 	
-	@Column(name = "status")
-	private PatientStatus status;
+	private PatientStatus status = PatientStatus.PENDING;
 	
-	
-	
-	@ManyToOne
-	@JoinColumn(name = "hospitalId")
-	private Hospital hospital;
+	@NotNull
+	private Long hospitalId;
 	
 	@Enumerated(EnumType.STRING)
-    @Column(name = "blood_group")
 	private BloodGroup bloodGroup;
-	
 }

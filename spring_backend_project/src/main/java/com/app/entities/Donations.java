@@ -1,9 +1,10 @@
 package com.app.entities;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +23,8 @@ public class Donations extends BaseEntity{
 	
 	private LocalDate donationDate;
 	
+	@JoinColumn(name = "userId")
+	@ManyToOne
 	private User donor;
-	
-	private PatientsRequest patient;
+
 }

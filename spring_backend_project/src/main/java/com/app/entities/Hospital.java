@@ -1,13 +1,10 @@
 package com.app.entities;
 
-import java.time.LocalDate;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.app.enums.Gender;
-import com.app.enums.UserRole;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,6 +23,7 @@ public class Hospital extends BaseEntity{
 	private String name;
 	@Column(name = "city")
 	private String city;
-	@Column(name = "admin")
+	@OneToOne
+	@JoinColumn(name = "adminId")
 	private User admin;
 }
